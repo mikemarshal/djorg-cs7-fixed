@@ -18,10 +18,8 @@ from django.urls import path, include
 from django.views.generic import TemplateView
 
 from rest_framework import routers
-from notes.api import NoteViewSet
 
 urlpatterns = [
-    path('api/', include(router.urls)),
     path('', TemplateView.as_view(template_name='djorg_base.html')),
     path('bookmarks/', include('bookmarks.urls')),
     path('admin/', admin.site.urls)
