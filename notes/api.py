@@ -3,6 +3,11 @@ from .models import Note
 
 class NoteSerializer(serializers.HyperlinkedModelSerializer):
 
+    def create(self, validated_data):
+        user = self.context['request'].user
+        note = Note.objects.create(user=user, **validated_data)
+        return note
+
     class Meta:
         model = Note
         fields = ('title', 'content')
